@@ -1,0 +1,114 @@
+.text-small {
+    font-size: 0.95rem;
+}
+
+.emblem {
+    height: 100px;
+}
+
+.nic-logo {
+    height: 50px; /* Customize as per your requirement */
+}
+
+.footer {
+    background-color: #008080; /* Match the green background */
+    color: white;
+    padding: 10px 0;
+}
+.footer .divider {
+    border-left: 1px solid white;
+    height: 40px;
+    margin: 0 20px;
+}
+.nic-logo-footer {
+    height: 80px;
+    margin-right: 10px;
+}
+.digital-india-logo {
+    background-color: white;
+    height: 50px;
+    margin-right: 20px;
+}
+.footer-text {
+    font-size: 0.9rem;
+}
+
+.login-section {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f7f7f7
+    ); /* Subtle gradient background */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+    border: none;
+    border-radius: 12px; /* Softer border radius */
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+}
+.login-card:hover {
+    transform: translateY(-5px); /* Lifts the card on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+.login-card h2 {
+    color: #f57c00; /* Bright color for the title */
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+
+    text-transform: uppercase; /* Uppercase styling for emphasis */
+    letter-spacing: 1px; /* Adds spacing between letters */
+}
+.login-card .form-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333; /* Darker color for labels */
+}
+.login-card .form-control {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.login-card .form-control:focus {
+    border-color: #f57c00; /* Orange border on focus */
+    box-shadow: 0 0 5px rgba(245, 124, 0, 0.5); /* Glow effect */
+}
+.login-title {
+    color: #f57c00;
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+}
+.btn-custom {
+    background-color: #f57c00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px; /* More rounded button */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-custom {
+    background-color: #f57c00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px; /* More rounded button */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-custom:hover {
+    background-color: #d65a00; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarges button */
+}
+
+.btn-custom:active {
+    transform: scale(0.98); /* Slightly reduces size on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow when clicked */
+}

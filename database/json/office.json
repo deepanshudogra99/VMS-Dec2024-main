@@ -1,0 +1,22 @@
+[
+    {
+        "officecode" : "1",
+        "officename" :"CGO CMPLEX"
+    },
+    {
+        "officecode" : "2",
+        "officename" :"DISTRICT CENTER"
+    },
+    {
+        "officecode" : "3",
+        "officename" :"HIGH COURT"
+    },
+    {
+        "officecode" : "4",
+        "officename" :"STATE CENTER"
+    },
+    {
+        "officecode" : "5",
+        "officename" :"VIDHAN SABHA"
+    }
+]

@@ -1,0 +1,75 @@
+[
+    {
+        "statecode" : "1",
+        "districtcode" :"1",
+        "districtname" :"BILASPUR",
+        "districtabbr" :"BIL"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"2",
+        "districtname" :"CHAMBA",
+        "districtabbr" :"CHA"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"3",
+        "districtname" :"HAMIRPUR",
+        "districtabbr" :"HAM"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"4",
+        "districtname" :"KANGRA",
+        "districtabbr" :"KAN"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"5",
+        "districtname" :"KINNAUR",
+        "districtabbr" :"KIN"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"6",
+        "districtname" :"KULLU",
+        "districtabbr" :"KUL"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"7",
+        "districtname" :"LAHAUL AND SPITI",
+        "districtabbr" :"LAH"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"8",
+        "districtname" :"MANDI",
+        "districtabbr" :"MAN"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"9",
+        "districtname" :"SHIMLA",
+        "districtabbr" :"SHI"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"10",
+        "districtname" :"SIRMAUR",
+        "districtabbr" :"SIR"
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"11",
+        "districtname" :"SOLAN",
+        "districtabbr" :"SOL"
+        
+    },
+    {
+        "statecode" : "1",
+        "districtcode" :"12",
+        "districtname" :"UNA",
+        "districtabbr" :"UNA"
+    }
+]

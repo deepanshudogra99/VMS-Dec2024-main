@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 Navbar</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Brand</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Bootstrap 5 JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+<div>
+  <div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header bg-danger text-white text-center p-3">
+        <h5>Register New User</h5>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url('/register') }}">
+          @csrf
+          <div class="row g-3">
+            <!-- State Name -->
+            <div class="col-md-3">
+              <label for="stateName" class="form-label"><b>State Name</b></label>
+              <select name="statecode" id="state-list" class="form-select">
+                <option>Select State</option>
+                <!-- Add options dynamically -->
+                @foreach ($states as $s)
+          <!-- <option value="{{ $s->statecode }} ">{{ $s->statename }} </option> -->
+
+          <option value="{{ $s['statecode'] }} ">{{ $s['statename'] }} </option>
+        @endforeach
+
+              </select>
+              <span class="text-danger">
+                @error('statecode')
+          {{ $message }}
+        @enderror
+              </span>
+            </div>
+
+            <!-- District Name -->
+            <div class=" col-md-3">
+              <label for="districtName" class="form-label"><b>District Name</b></label>
+              <select name="districtcode" id="district-list" class="form-select">
+                <option value="">Select District</option>
+                <!-- Add options dynamically -->
+              </select>
+              @error('officecode')
+          {{ $message }}
+        @enderror
+            </div>
+
+            <!-- Office Name -->
+            <div class="col-md-3">
+              <label for="officeName" class="form-label"><b>Office Name</b></label>
+              <select id="officename" name="officecode" class="form-select">
+                <option>Select Office</option>
+                <!-- Add options dynamically -->
+                @foreach ($offices as $office)
+          <option value="{{ $office['officecode'] }} ">{{ $office['officename'] }} </option>
+        @endforeach
+              </select>
+              <span class="text-danger">
+                @error('officecode')
+          {{ $message }}
+        @enderror
+              </span>
+            </div>
+
+            <!-- User Type -->
+            <div class="col-md-3">
+              <label for="userType" class="form-label"><b>User Type</b></label>
+              <select id="userType" name="usertypecode" class="form-select">
+                <option>Select User Type</option>
+                <!-- Add options dynamically -->
+                @foreach ($userTypes as $usertype)
+          <option value="{{ $usertype['usertypecode'] }} ">{{ $usertype['usertypename'] }} </option>
+        @endforeach
+              </select>
+              @error('usertypecode')
+          {{ $message }}
+        @enderror
+            </div>
+          </div>
+
+          <div class="row g-3 mt-3">
+            <!-- Name -->
+            <div class="col-md-3">
+              <label for="name" class="form-label"><b>Name</b></label>
+              <input type="text" value="{{ old('name')}}" name="name"
+                class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name">
+
+              <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror"
+                placeholder="Name">
+              <span class="text-danger">
+                @error('name')
+          {{ $message }}
+        @enderror
+              </span>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-3">
+              <label for="email" class="form-label"><b>Email address</b></label>
+              <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                placeholder="Email">
+              <span class="text-danger">
+                @error('email')
+          {{ $message }}
+        @enderror
+              </span>
+            </div>
+
+            <!-- Password -->
+            <div class="col-md-3">
+              <label for="password" class="form-label"><b>Password</b></label>
+              <input type="password" id="password" name="password"
+                class="form-control @error('email') is-invalid @enderror" placeholder="Password">
+              <span class="text-danger">
+                @error('email')
+          {{ $message }}
+        @enderror
+              </span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-md-3">
+              <label for="confirmPassword" class="form-label"><b>Confirm Password</b></label>
+              <input type="password" id="confirmPassword" class="form-control @error('password')"
+                placeholder="Confirm Password">
+              <span class="text-danger">
+                @error('email')
+          {{ $message }}
+        @enderror
+              </span>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-lg btn-danger">Register</button>
+            <button type="reset" class="btn btn-lg btn-warning">Reset</button>
+            <a href="/" class="btn btn-lg btn-primary ml-3">Back</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="navbar navbar-expand-lg mb-3" style="background-color: #008080;">
+  <div class="container-fluid">
+    @if (Auth::user()->userrole == 0)
+    <a class="navbar-brand text-white" href="#">Super Admin</a>
+  @elseif (Auth::user()->userrole == 1)
+  <a class="navbar-brand text-white" href="#">Office Admin</a>
+@elseif (Auth::user()->userrole == 2)
+  <a class="navbar-brand text-white" href="#">FMS User</a>
+@else
+  <a class="navbar-brand text-white" href="#">Unknown Role</a>
+@endif
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <!-- <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+        </li> -->
+        @if (Auth::user()->userrole == 0)
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/usermanagement">User Management</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">View Participants Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Print Participants Data</a>
+      </li>
+    @elseif(Auth::user()->userrole == 1)
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#">View Participants Data</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#">Print Participants Data</a>
+    </li>
+  @else
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Add VC</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Add Participants</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">View Participants Data</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Print Participants Data</a>
+  </li>
+@endif
+        <li class="nav-item">
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-sm btn-danger" type="submit">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

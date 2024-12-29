@@ -1,0 +1,18 @@
+[
+    {
+        "statecode" : "1",
+        "districtcode" : "6",
+        "officecode" : "4",
+        "usertypecode" : "1",
+        "userrole" : "0",
+        "userid" : "Usr1",
+        "name" : "State Admin",
+        "email" : "hp@nic.in",        
+        "password" : "$2y$12$gPFtPofsMLaKTMfoR5ReEeYaxhfd5V6jGtAmIlS7kydJ0lVTjavwa",
+        "status" : "1",
+        "activationdate" : "2024-12-22 17:09:14",
+        "deactivationdate" : "2024-12-22 17:09:14",
+        "email_verified_at" : "2024-12-22 17:09:14"
+
+    } 
+]
