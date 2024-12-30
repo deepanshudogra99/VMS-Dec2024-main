@@ -28,15 +28,23 @@
           <div class="col-md-4">
           <label for="participantName" class="form-label">Participant Name:</label>
           <input type="text" id="participantName" class="form-control" wire:model="name" required>
+          @error('name') <span class="error">{{ $message }}</span> @enderror
           </div>
           <div class="col-md-4">
           <label for="participantRole" class="form-label">Participant Designation:</label>
           <input type="text" id="participantRole" class="form-control" wire:model="designation" required>
+          @error('designation') <span class="error">{{ $message }}</span> @enderror
           </div>
           <div class="col-md-4">
           <label for="participantMobile" class="form-label">Participant's Mobile Number:</label>
           <input type="text" id="participantMobile" class="form-control" wire:model="mobileno" required>
+          @error('mobileno') <span class="error">{{ $message }}</span> @enderror
           </div>
+          @if (session()->has('success'))
+        <div class="alert alert-success">
+        {{ session('success') }}
+        </div>
+      @endif
         </div>
         <!-- Button aligned horizontally with form -->
         <div class="row mb-3">

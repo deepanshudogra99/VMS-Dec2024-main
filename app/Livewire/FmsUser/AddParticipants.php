@@ -17,6 +17,14 @@ class AddParticipants extends Component
   public $mobileno;
   public $tableData;
   public $participantdata = [];
+
+  protected $rules = [
+
+    'name' => 'required|string|max:255',
+    'designation' => 'nullable|string|max:255',
+    'mobileno' => 'required|numeric|digits:10',  // Assuming 10-digit mobile number
+    // Ensure the user exists in the users table
+  ];
   public function render()
   {
     $statecode = Auth::user()->statecode;
@@ -44,7 +52,7 @@ class AddParticipants extends Component
     // $distcode = Auth::user()->districtcode;
     // $officecode = Auth::user()->officecode;
     $userid = Auth::user()->userid;
-
+    $this->validate();
     $participants = VcMain::create([
       'vcid' => $this->selectedVc,
       'name' => $this->name,
@@ -52,7 +60,8 @@ class AddParticipants extends Component
       'mobile' => $this->mobileno,
       'userid' => $userid,
     ]);
+    $this->reset(['name', 'designation', 'mobileno']);
 
-    //session()->flash('success', 'Participant added successfully.');
+    session()->flash('success', 'Participant added successfully.');
   }
 }
