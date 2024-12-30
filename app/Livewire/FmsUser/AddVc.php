@@ -2,9 +2,11 @@
 
 namespace App\Livewire\FmsUser;
 
+use App\Models\VcMain;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VcMaster;
+use Livewire\WithPagination;
 
 class AddVc extends Component
 {
@@ -13,12 +15,18 @@ class AddVc extends Component
   public $purpose;
   public $timein;
   public $timeout;
+  public $id;
+  public $editModal = false;
+  public $addmodal = false;
 
-  public $showModal = false;
 
-
-
-
+  protected $rules = [
+    'vcid' => 'required|string',
+    'vcdate' => 'required|date',
+    'purpose' => 'required|string',
+    'timein' => 'required',
+    'timeout' => 'required',
+  ];
   // protected $rules = [
   //   'vcid' => 'required|string|max:255',
   //   'vcdate' => 'required|string|max:255',
@@ -30,19 +38,28 @@ class AddVc extends Component
   public function render()
   {
     $distcode = Auth::user()->districtcode;
-
-    $tabledata = VcMaster::where('districtcode', $distcode)->get();
-    //dd($tabledata);
+    $statecode = Auth::user()->statecode;
+    $tabledata = VcMaster::where('statecode', $statecode)
+      ->where('districtcode', $distcode)
+      ->orderBy('vcdate', 'desc')
+      ->orderBy('id', 'desc')
+      ->paginate(8);
     return view('livewire.fms-user.add-vc', compact('tabledata'));
   }
 
   public function submitForm()
   {
+    $this->vcid = null;
+    $this->vcdate = null;
+    $this->purpose = null;
+    $this->timein = null;
+    $this->timeout = null;
+
     $this->statecode = Auth::user()->statecode;
     $this->districtcode = Auth::user()->districtcode;
     $this->officecode = Auth::user()->officecode;
     $this->userid = Auth::user()->userid;
-    // $this->validate();
+    $this->validate();
     VcMaster::create([
       'statecode' => $this->statecode,
       'districtcode' => $this->districtcode,
@@ -54,19 +71,52 @@ class AddVc extends Component
       'timeout' => $this->timeout,
       'userid' => $this->userid
     ]);
-
-    // Optionally, reset the form fields after successful submission
     $this->reset();
     $this->showModal = false;
-
     session()->flash('message', 'VC Entered Successfully!');
 
   }
-
-
-
-  public function toggleModal()
+  public function edit($editvc)
   {
-    $this->showModal = !$this->showModal; // Toggling the boolean value
+    $this->toggleModal('edit');
+    $vctobeEdited = VcMaster::findOrFail($editvc);
+    $this->id = $vctobeEdited->id;
+    $this->vcid = $vctobeEdited->vcid;
+    $this->vcdate = $vctobeEdited->vcdate;
+    $this->purpose = $vctobeEdited->purpose;
+    $this->timein = $vctobeEdited->timein;
+    $this->timeout = $vctobeEdited->timeout;
+  }
+
+  public function update()
+  {
+    $this->validate();
+    $vctobeEdited = VcMaster::findOrFail($this->id);
+    $vctobeEdited->vcid = $this->vcid;
+    $vctobeEdited->vcdate = $this->vcdate;
+    $vctobeEdited->purpose = $this->purpose;
+    $vctobeEdited->timein = $this->timein;
+    $vctobeEdited->timeout = $this->timeout;
+    // Save the changes to the database
+    $vctobeEdited->save();
+    $this->vcid = null;
+    $this->vcdate = null;
+    $this->purpose = null;
+    $this->timein = null;
+    $this->timeout = null;
+    $this->editModal = false;
+    session()->flash('message', 'Entry updated successfully.');
+  }
+  public function toggleModal($modalType)
+  {
+    switch ($modalType) {
+      case 'show':
+        $this->addmodal = !$this->addmodal;
+        break;
+      case 'edit':
+        $this->editModal = !$this->editModal;
+        break;
+
+    }
   }
 }

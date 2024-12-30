@@ -3,6 +3,7 @@ use App\Models\State;
 use App\Models\District;
 use App\Models\Office;
 use App\Models\UserType;
+use App\Models\User;
 use Carbon\Carbon;
 
 function getstate($statecode)
@@ -28,6 +29,13 @@ function getusertype($usertypecode)
   $usertypename = UserType::where('usertypecode', $usertypecode)->pluck('usertypename');
   return $usertypename[0];
 }
+function getusername($userid)
+{
+  //dd($userid);
+  $username = User::where('userid', $userid)->pluck('name')->first();
+  //dd($username);
+  return $username;
+}
 
 if (!function_exists('parseDate')) {
   /**
@@ -44,7 +52,12 @@ if (!function_exists('parseDate')) {
     // Return the date in dd-mm-yyyy format
     return $carbonDate->format('d-m-Y');
   }
+
 }
+
+
+
+
 
 
 
