@@ -5,6 +5,7 @@
         <h3 class="text-center text-white">Participants of Video Conferences</h3>
       </div>
       <div class="col-12 mt-2 mb-2 p-1 d-flex align-items-center justify-content-start">
+
         <label for="vcSelect" class="me-3">Select VC:</label>
         <select id="vcSelect" class="form-select me-3" wire:model="selectedVc" wire:change="getvcdetails">
           <option value="">Select VC</option>
@@ -12,6 +13,8 @@
         <option value="{{ $v->id }}">{{ $v->vcid }}</option>
       @endforeach
         </select>
+
+
       </div>
       <div class="col-12 text-center">
         @if ($tableData)
@@ -19,6 +22,7 @@
         <h5 class="mt-2 text-white p-1 rounded-pill" style="background-color: #008080">Add Participants to VC ID:
         {{ $tableData->vcid }}
         </h5>
+
         <form wire:submit.prevent="addParticipant" class="d-flex flex-column align-items-center">
         <div class="row mb-3">
           <div class="col-md-4">
@@ -41,24 +45,30 @@
           </div>
         </div>
         </form>
+
       </div>
     @endif
-        <table class="table table-striped ">
-          <thead class="bg-dark text-white">
-            <tr>
-              <th>Name</th>
-              <th>Designation</th>
-              <th>Mobile Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>John Doe</td>
-              <td>Software Engineer</td>
-              <td>123-456-7890</td>
-            </tr>
-          </tbody>
-        </table>
+        @if($participantdata)
+      <table class="table table-striped ">
+        <thead class="bg-dark text-white">
+        <tr>
+          <th>Name</th>
+          <th>Designation</th>
+          <th>Mobile Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach ($participantdata as $p)
+      <tr>
+        <td>{{$p->name}}</td>
+        <td>{{$p->designation}}</td>
+        <td>{{$p->mobile}}</td>
+      </tr>
+    @endforeach
+
+        </tbody>
+      </table>
+    @endif
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ class AddParticipants extends Component
   public $designation;
   public $mobileno;
   public $tableData;
+  public $participantdata = [];
   public function render()
   {
     $statecode = Auth::user()->statecode;
@@ -23,15 +24,17 @@ class AddParticipants extends Component
     $vc = VcMaster::where('statecode', $statecode)
       ->where('districtcode', $distcode)->
       get();
+    $this->getvcdetails();
     return view('livewire.fms-user.add-participants', ['vc' => $vc]);
   }
   public function getvcdetails()
   {
-    // Ensure a valid VC is selected before fetching details
     if ($this->selectedVc != 0) {
       $this->tableData = VcMaster::find($this->selectedVc);
+      $this->participantdata = VcMain::where('vcid', $this->selectedVc)->get();
     } else {
-      $this->tableData = null; // Clear tableData if no valid VC is selected
+      $this->tableData = null;
+      $this->participantdata = [];
     }
   }
 
@@ -49,7 +52,7 @@ class AddParticipants extends Component
       'mobile' => $this->mobileno,
       'userid' => $userid,
     ]);
-    $this->reset();
-    session()->flash('success', 'Participant added successfully.');
+
+    //session()->flash('success', 'Participant added successfully.');
   }
 }
