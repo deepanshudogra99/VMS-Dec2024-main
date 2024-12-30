@@ -25,6 +25,7 @@ Route::post('/', [LoginController::class, 'login'])->name('login.submit');
 Route::middleware(['auth'])->group(function () {
   Route::get('/usermanagement', [SuperAdminController::class, 'usermanagement'])->name('usermanagement');
   Route::get('/addvc', [FmsUserController::class, 'addvc'])->name('addvc');
+  Route::get('/addparticipants', [FmsUserController::class, 'addparticipants'])->name('addparticipants');
 
 
 

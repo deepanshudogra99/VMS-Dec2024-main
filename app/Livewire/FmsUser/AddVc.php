@@ -49,12 +49,12 @@ class AddVc extends Component
 
   public function submitForm()
   {
-    $this->vcid = null;
-    $this->vcdate = null;
-    $this->purpose = null;
-    $this->timein = null;
-    $this->timeout = null;
-
+    // $this->vcid = null;
+    // $this->vcdate = null;
+    // $this->purpose = null;
+    // $this->timein = null;
+    // $this->timeout = null;
+    // dd($this->vcid);
     $this->statecode = Auth::user()->statecode;
     $this->districtcode = Auth::user()->districtcode;
     $this->officecode = Auth::user()->officecode;
@@ -99,14 +99,18 @@ class AddVc extends Component
     $vctobeEdited->timeout = $this->timeout;
     // Save the changes to the database
     $vctobeEdited->save();
+    $this->resetFields();
+    session()->flash('message', 'Entry updated successfully.');
+  }
+  private function resetFields()
+  {
     $this->vcid = null;
     $this->vcdate = null;
     $this->purpose = null;
     $this->timein = null;
     $this->timeout = null;
-    $this->editModal = false;
-    session()->flash('message', 'Entry updated successfully.');
   }
+
   public function toggleModal($modalType)
   {
     switch ($modalType) {

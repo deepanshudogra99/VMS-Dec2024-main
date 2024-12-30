@@ -243,3 +243,60 @@
     </div>
   </div>
 </nav>
+
+
+
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="p-2 rounded-pill" style="background-color: #008080">
+        <h3 class="text-center text-white">Participants of Video Conferences</h3>
+      </div>
+      <div class="col-4 mt-2 mb-2 p-1 d-flex align-items-center justify-content-start">
+        <!-- Dropdown for selecting VC -->
+        <label for="vcSelect" class="me-3">Select VC:</label>
+        <select id="" class="form-select me-3" wire:model="selectedVc" wire:change="getvcdetails">
+          <option value="-1">Select VC</option>
+          @foreach ($vc as $v)
+        <option value="{{$v->id}}">{{$v->vcid}}</option>
+      @endforeach
+        </select>
+        <!-- Heading -->
+        <h5 class="mb-0"></h5>
+      </div>
+      @if ($tableData)
+
+    @endif
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="col-12 text-center">
+  @if ($tableData)
+<table class="table table-striped mt-3">
+  <thead>
+  <tr>
+    <th>VC ID</th>
+    <th>VC Date</th>
+    <th>Purpose</th>
+    <th>VC Start Time</th>
+    <th>VC End Time</th>
+    <th>Entered By</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{ $tableData->vcid }}</td>
+    <td>{{ parseDate($tableData->vcdate) }}</td>
+    <td>{{ $tableData->purpose }}</td>
+    <td>{{ $tableData->timein }}</td>
+    <td>{{ $tableData->timeout }}</td>
+    <td>{{ getusername($tableData->userid) }}</td>
+  </tr>
+  </tbody>
+</table>

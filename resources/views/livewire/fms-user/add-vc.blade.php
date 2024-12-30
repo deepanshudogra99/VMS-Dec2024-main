@@ -38,7 +38,7 @@
           <label for="vcEndTime" class="form-label"><b>VC End Time:</b></label>
           <input type="time" wire:model="timeout" class="form-control mx-auto" name="timeout" required>
           </div>
-          <button type="submit" class="btn btn-md btn-primary text-center">Submit</button>
+          <button type="submit" wire:click="submitForm()" class="btn btn-md btn-primary text-center">Submit</button>
         </form>
         <div class="text-end">
           <button type="button" wire:click="toggleModal('show')" class="btn btn-info text-end">Cancel</button>

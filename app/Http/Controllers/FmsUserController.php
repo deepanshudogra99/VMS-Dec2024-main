@@ -10,4 +10,10 @@ class FmsUserController extends Controller
   {
     return view('fmsuser.addvc');
   }
+  public function addparticipants()
+  {
+    return view('fmsuser.addparticipants');
+  }
+
+
 }
